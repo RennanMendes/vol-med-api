@@ -1,10 +1,10 @@
-package med.vol.api.dto.patient;
+package med.vol.api.domain.dto.patient;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.vol.api.dto.adress.AddressDTO;
+import med.vol.api.domain.dto.adress.AddressDTO;
 
 public record RegisterPatientData(
         @NotBlank

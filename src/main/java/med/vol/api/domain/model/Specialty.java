@@ -1,4 +1,4 @@
-package med.vol.api.model;
+package med.vol.api.domain.model;
 
 public enum Specialty {
     ORTOPEDIA, CARDIOLOGIA, GINECOLOGIA, DERMATOLOGIA;

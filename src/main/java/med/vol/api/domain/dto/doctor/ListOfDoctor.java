@@ -1,7 +1,7 @@
-package med.vol.api.dto.doctor;
+package med.vol.api.domain.dto.doctor;
 
-import med.vol.api.model.Doctor;
-import med.vol.api.model.Specialty;
+import med.vol.api.domain.model.Doctor;
+import med.vol.api.domain.model.Specialty;
 
 public record ListOfDoctor(
         Long id,

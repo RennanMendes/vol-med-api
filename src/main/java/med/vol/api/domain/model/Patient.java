@@ -1,58 +1,53 @@
-package med.vol.api.model;
-
+package med.vol.api.domain.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.vol.api.dto.doctor.RegisterDoctorData;
-import med.vol.api.dto.doctor.UpdateDoctor;
+import med.vol.api.domain.dto.patient.RegisterPatientData;
+import med.vol.api.domain.dto.patient.UpdatePatientDTO;
 
-
-@Table(name = "doctors")
+@Table(name = "patients")
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Doctor {
+public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
-    private String crm;
     private String phone;
+    private String cpf;
     private Boolean active;
-
-    @Enumerated(EnumType.STRING)
-    private Specialty specialty;
 
     @Embedded
     private Address address;
 
-    public Doctor(RegisterDoctorData data) {
-        this.name = data.name();
-        this.email = data.email();
-        this.crm = data.crm();
-        this.phone = data.phone();
-        this.specialty = data.specialty();
-        this.address = new Address(data.address());
+    public Patient(RegisterPatientData patientData) {
+        this.name = patientData.name();
+        this.email = patientData.email();
+        this.phone = patientData.phone();
+        this.cpf = patientData.cpf();
+        this.address = new Address(patientData.address());
         this.active = true;
     }
 
-    public void dataUpdate(UpdateDoctor data){
+    public void updateData(UpdatePatientDTO data) {
         this.name = data.name() != null ? data.name() : this.name;
         this.phone = data.phone() != null ? data.phone() : this.phone;
 
         if (data.address() != null) {
-            this.address.updateAddress( data.address());
+            this.address.updateAddress(data.address());
         }
+
     }
 
-    public void delet() {
+    public void delete(Patient patient) {
         this.active = false;
     }
 }

@@ -1,7 +1,7 @@
-package med.vol.api.dto.patient;
+package med.vol.api.domain.dto.patient;
 
-import med.vol.api.model.Address;
-import med.vol.api.model.Patient;
+import med.vol.api.domain.model.Address;
+import med.vol.api.domain.model.Patient;
 
 public record PatientDOT(
         Long id,

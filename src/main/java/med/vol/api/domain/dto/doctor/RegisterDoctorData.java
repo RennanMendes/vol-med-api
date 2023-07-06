@@ -1,12 +1,12 @@
-package med.vol.api.dto.doctor;
+package med.vol.api.domain.dto.doctor;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.vol.api.dto.adress.AddressDTO;
-import med.vol.api.model.Specialty;
+import med.vol.api.domain.dto.adress.AddressDTO;
+import med.vol.api.domain.model.Specialty;
 
 public record RegisterDoctorData(
         @NotBlank
