@@ -3,10 +3,10 @@ package med.vol.api.controller;
 
 import jakarta.validation.Valid;
 import med.vol.api.domain.dto.patient.ListOfPatient;
-import med.vol.api.domain.dto.patient.PatientDOT;
+import med.vol.api.domain.dto.patient.PatientDTO;
 import med.vol.api.domain.dto.patient.UpdatePatientDTO;
 import med.vol.api.domain.model.Patient;
-import med.vol.api.domain.repository.PetientRepository;
+import med.vol.api.domain.repository.PatientRepository;
 import med.vol.api.domain.dto.patient.RegisterPatientData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,16 +22,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class PatientController {
 
     @Autowired
-    private PetientRepository repository;
+    private PatientRepository repository;
     @PostMapping
     @Transactional
-    public ResponseEntity<PatientDOT> patient(@RequestBody @Valid RegisterPatientData patientData, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<PatientDTO> patient(@RequestBody @Valid RegisterPatientData patientData, UriComponentsBuilder uriBuilder) {
         Patient patient = new Patient(patientData);
         repository.save(patient);
 
         var uri = uriBuilder.path("/patient/{id}").buildAndExpand(patient.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(new PatientDOT(patient));
+        return ResponseEntity.created(uri).body(new PatientDTO(patient));
     }
 
     @GetMapping
@@ -42,19 +42,19 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PatientDOT> detail(@PathVariable Long id) {
+    public ResponseEntity<PatientDTO> detail(@PathVariable Long id) {
         Patient patient = repository.getReferenceById(id);
 
-        return ResponseEntity.ok(new PatientDOT(patient));
+        return ResponseEntity.ok(new PatientDTO(patient));
     }
 
     @PutMapping
     @Transactional
-    public ResponseEntity<PatientDOT> update(@RequestBody @Valid UpdatePatientDTO updatePatientDTO){
+    public ResponseEntity<PatientDTO> update(@RequestBody @Valid UpdatePatientDTO updatePatientDTO){
         Patient patient = repository.getReferenceById(updatePatientDTO.id());
         patient.updateData(updatePatientDTO);
 
-        return ResponseEntity.ok(new PatientDOT(patient));
+        return ResponseEntity.ok(new PatientDTO(patient));
     }
 
     @DeleteMapping("/{id}")

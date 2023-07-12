@@ -1,4 +1,4 @@
-package med.vol.api.infra.security.dto;
+package med.vol.api.infra.dto;
 
 public record TokenJwtDTO(String token) {
 }
