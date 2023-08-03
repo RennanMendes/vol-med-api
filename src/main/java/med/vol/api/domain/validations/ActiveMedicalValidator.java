@@ -21,6 +21,5 @@ public class ActiveMedicalValidator implements AppointmentSchedulingValidator {
         if (!doctorIsActive) {
             throw new ExceptionValidation("Consulta não pode ser agendado com médico excluído");
         }
-
     }
 }

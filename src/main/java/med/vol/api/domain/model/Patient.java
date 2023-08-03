@@ -44,7 +44,6 @@ public class Patient {
         if (data.address() != null) {
             this.address.updateAddress(data.address());
         }
-
     }
 
     public void delete(Patient patient) {

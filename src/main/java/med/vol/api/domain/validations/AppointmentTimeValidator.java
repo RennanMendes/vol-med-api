@@ -2,7 +2,6 @@ package med.vol.api.domain.validations;
 
 import med.vol.api.domain.dto.appointment.AppointmentDTO;
 import med.vol.api.domain.exception.ExceptionValidation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -19,8 +18,6 @@ public class AppointmentTimeValidator implements AppointmentSchedulingValidator 
         if (differenceInMinutes < 30) {
             throw new ExceptionValidation("Consulta deve ser agendada com antecedência minima de 30min");
         }
-
-
     }
 
 }

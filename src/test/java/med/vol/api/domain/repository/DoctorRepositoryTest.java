@@ -55,7 +55,6 @@ class DoctorRepositoryTest {
         var doctor = registerDoctor("Pedro", "pedro@email.com", "123456", Specialty.CARDIOLOGIA);
         var freeDoctor = doctorRepository.randomChoiceOfDoctor(Specialty.CARDIOLOGIA, nextMonday);
 
-
         assertThat(freeDoctor).isEqualTo(doctor);
     }
 
